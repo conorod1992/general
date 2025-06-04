@@ -1,0 +1,8 @@
+{
+  "domain": "smart_reminders",
+  "name": "Smart Reminders",
+  "documentation": "https://example.com/smart_reminders",
+  "dependencies": [],
+  "codeowners": ["@example"],
+  "version": "0.1.0"
+}
