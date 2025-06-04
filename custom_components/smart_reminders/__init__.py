@@ -14,6 +14,7 @@ from dateutil.rrule import rrulestr
 from homeassistant.core import HomeAssistant, ServiceCall, callback
 from homeassistant.const import EVENT_HOMEASSISTANT_START
 from homeassistant.helpers.event import async_track_point_in_utc_time
+from homeassistant.util import dt as dt_util
 
 DOMAIN = "smart_reminders"
 SERVICE_ADD_REMINDER = "add_reminder"
@@ -43,13 +44,13 @@ class Reminder:
             parsed = dateparser.parse(self.start)
             if parsed is None:
                 raise ValueError(f"Could not parse start datetime: {self.start}")
-            self.start = parsed
+            self.start = dt_util.as_utc(parsed)
         if self.rrule:
             self._rrule = rrulestr(self.rrule, dtstart=self.start)
 
     def next_occurrence(self) -> Optional[datetime]:
         if self._rrule:
-            return self._rrule.after(datetime.utcnow(), inc=False)
+            return self._rrule.after(dt_util.utcnow(), inc=False)
         return None
 
 class ReminderManager:
