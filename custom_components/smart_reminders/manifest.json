@@ -1,8 +1,9 @@
 {
   "domain": "smart_reminders",
   "name": "Smart Reminders",
-  "documentation": "https://example.com/smart_reminders",
+  "documentation": "https://github.com/conorod1992/general/tree/main/custom_components/smart_reminders",
   "dependencies": [],
-  "codeowners": ["@example"],
+  "codeowners": ["@conorod1992"],
+  "requirements": ["dateparser==1.1.8"],
   "version": "0.1.0"
 }
